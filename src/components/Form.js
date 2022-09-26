@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
+      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
     return (
       <fieldset>
@@ -94,6 +94,7 @@ Form.propTypes = ({
   cardAttr3: PropTypes.string,
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
+  hasTrunfo: PropTypes.bool,
   cardTrunfo: PropTypes.bool,
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
