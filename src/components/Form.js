@@ -4,49 +4,56 @@ import PropTypes from 'prop-types';
 class Form extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3,
-      cardImage, cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled, onInputChange,
+      cardImage, cardRare, cardTrunfo, isSaveButtonDisabled, onInputChange,
       onSaveButtonClick } = this.props;
     return (
       <fieldset>
         <legend>
           <form>
             <input
+              name="cardName"
               data-testid="name-input"
               type="text"
               value={ cardName }
               onChange={ onInputChange }
             />
             <input
+              name="cardDescription"
               data-testid="description-input"
               type="textarea"
               value={ cardDescription }
               onChange={ onInputChange }
             />
             <input
+              name="cardAttr1"
               data-testid="attr1-input"
               type="number"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
             <input
+              name="cardAttr2"
               data-testid="attr2-input"
               type="number"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
             <input
+              name="cardAttr3"
               data-testid="attr3-input"
               type="number"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
             <input
+              name="cardImage"
               data-testid="image-input"
               type="text"
               value={ cardImage }
               onChange={ onInputChange }
             />
             <select
+              name="cardRare"
               data-testid="rare-input"
               value={ cardRare }
               onChange={ onInputChange }
@@ -56,6 +63,7 @@ class Form extends Component {
               <option>muito raro</option>
             </select>
             <input
+              name="cardTrunfo"
               data-testid="trunfo-input"
               type="checkBox"
               checked={ cardTrunfo }
@@ -87,7 +95,6 @@ Form.propTypes = ({
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
-  hasTrunfo: PropTypes.bool,
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
