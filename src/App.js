@@ -25,12 +25,33 @@ class App extends React.Component {
     });
   };
 
+  isSaveButtonDisabled = () => {
+    const { cardName, cardDescription, cardImage, cardAttr1,
+      cardAttr2, cardAttr3 } = this.state;
+    const checkName = cardName.length > 0;
+    const checkcardDescription = cardDescription.length > 0;
+    const checkcardImage = cardImage.length > 0;
+    const checkcardAttr1 = cardAttr1 <= Number('90') && cardAttr1 >= 0
+    && cardAttr1 !== '';
+    const checkcardAttr2 = cardAttr2 <= Number('90') && cardAttr2 >= 0
+    && cardAttr2 !== '';
+    const checkcardAttr3 = cardAttr3 <= Number('90') && cardAttr3 >= 0
+    && cardAttr3 !== '';
+    const checkTot = (Number(cardAttr1) + Number(cardAttr2)
+     + Number(cardAttr3)) <= Number('210');
+    return checkName && checkcardDescription && checkcardImage
+    && checkcardAttr1 && checkcardAttr2 && checkcardAttr3 && checkTot;
+  };
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
     return (
       <div>
-        <Form onInputChange={ this.onInputChange } />
+        <Form
+          onInputChange={ this.onInputChange }
+          isSaveButtonDisabled={ this.isSaveButtonDisabled }
+        />
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
