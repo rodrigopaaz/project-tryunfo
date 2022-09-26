@@ -62,13 +62,16 @@ class Form extends Component {
               <option>raro</option>
               <option>muito raro</option>
             </select>
-            <input
-              name="cardTrunfo"
-              data-testid="trunfo-input"
-              type="checkBox"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
+            {!hasTrunfo && (
+              <input
+                name="cardTrunfo"
+                data-testid="trunfo-input"
+                type="checkBox"
+                checked={ cardTrunfo }
+                onChange={ onInputChange }
+              />)}
+            {hasTrunfo && (
+              <p>Você já tem um Super Trunfo em seu baralho</p>)}
             <button
               type="button"
               data-testid="save-button"

@@ -14,6 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: '',
+      hasTrunfo: false,
       savedCards: [],
     });
   }
@@ -23,7 +24,7 @@ class App extends React.Component {
     const {
       cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo,
+      cardRare, cardTrunfo, hasTrunfo,
     } = this.state;
     const pushedCards = { cardName,
       cardDescription,
@@ -43,6 +44,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: '' });
+    return cardTrunfo ? this.setState({ hasTrunfo: true }) : null;
   };
 
   onInputChange = (event) => {
@@ -73,7 +75,7 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo } = this.state;
+      cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo } = this.state;
     return (
       <div>
         <Form
@@ -88,6 +90,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
