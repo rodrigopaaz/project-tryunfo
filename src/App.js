@@ -69,6 +69,7 @@ class App extends React.Component {
     && cardAttr3 !== '';
     const checkTot = (Number(cardAttr1) + Number(cardAttr2)
      + Number(cardAttr3)) <= Number('210');
+
     return checkName && checkcardDescription && checkcardImage
     && checkcardAttr1 && checkcardAttr2 && checkcardAttr3 && checkTot;
   };
@@ -89,7 +90,7 @@ class App extends React.Component {
       <div>
         <Form
           onInputChange={ this.onInputChange }
-          isSaveButtonDisabled={ this.isSaveButtonDisabled }
+          isSaveButtonDisabled={ !this.isSaveButtonDisabled() }
           onSaveButtonClick={ this.onSaveButtonClick }
           cardName={ cardName }
           cardDescription={ cardDescription }
