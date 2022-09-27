@@ -24,7 +24,7 @@ class App extends React.Component {
     const {
       cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo, hasTrunfo,
+      cardRare, cardTrunfo,
     } = this.state;
     const pushedCards = { cardName,
       cardDescription,
@@ -73,6 +73,15 @@ class App extends React.Component {
     && checkcardAttr1 && checkcardAttr2 && checkcardAttr3 && checkTot;
   };
 
+  removeCard = (event) => {
+    const { savedCards, hasTrunfo } = this.state;
+    const getCards = savedCards;
+    const remove = Number(event.target.id);
+    getCards.splice(remove, 1);
+    this.setState({ savedCards: getCards });
+    return hasTrunfo ? this.setState({ hasTrunfo: false }) : null;
+  };
+
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo, savedCards } = this.state;
@@ -102,17 +111,22 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        { savedCards.map((element, key) => (<Card
-          key={ key }
-          cardName={ element.cardName }
-          cardDescription={ element.cardDescription }
-          cardAttr1={ element.cardAttr1 }
-          cardAttr2={ element.cardAttr2 }
-          cardAttr3={ element.cardAttr3 }
-          cardImage={ element.cardImage }
-          cardRare={ element.cardRare }
-          cardTrunfo={ element.cardTrunfo }
-        />)) }
+        { savedCards.map((element, key) => (
+          <Card
+            key={ key }
+            cardName={ element.cardName }
+            cardDescription={ element.cardDescription }
+            cardAttr1={ element.cardAttr1 }
+            cardAttr2={ element.cardAttr2 }
+            cardAttr3={ element.cardAttr3 }
+            cardImage={ element.cardImage }
+            cardRare={ element.cardRare }
+            cardTrunfo={ element.cardTrunfo }
+            removeCard={ this.removeCard }
+            button
+            index={ key }
+          />
+        )) }
 
       </div>
     );

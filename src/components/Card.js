@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 class Card extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
+      cardAttr3, cardImage, cardRare, cardTrunfo,
+      button, removeCard, index } = this.props;
     return (
       <div className="card">
         <div className="nameImage">
@@ -24,6 +25,16 @@ class Card extends Component {
               Super Trunfo
 
             </p>
+          )}
+          {button && (
+            <button
+              id={ index }
+              type="button"
+              onClick={ removeCard }
+              data-testid="delete-button"
+            >
+              Excluir
+            </button>
           )}
         </div>
       </div>
