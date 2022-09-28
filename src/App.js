@@ -17,6 +17,7 @@ class App extends React.Component {
       hasTrunfo: false,
       savedCards: [],
       saved: [],
+      check: false,
     });
   }
 
@@ -93,7 +94,16 @@ class App extends React.Component {
     const { value } = filtro.target;
     const filtered = savedCards.filter((element) => element.cardRare
       .startsWith(value));
-    console.log(filtered);
+    return value !== 'todas'
+      ? this.setState({ savedCards: filtered })
+      : this.setState({ savedCards: saved });
+  };
+
+  filterByTrunfo = (filtro) => {
+    const { savedCards, saved } = this.state;
+    const { value } = filtro.target;
+    this.setState({ check: true });
+    const filtered = savedCards.filter((element) => element.cardTrunfo === true);
     return value !== 'todas'
       ? this.setState({ savedCards: filtered })
       : this.setState({ savedCards: saved });
@@ -111,7 +121,7 @@ class App extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo,
-      hasTrunfo, savedCards } = this.state;
+      hasTrunfo, savedCards, check } = this.state;
     return (
       <div>
         <Form
@@ -134,11 +144,13 @@ class App extends React.Component {
             type="text"
             data-testid="name-filter"
             onChange={ this.filterByName }
+            disabled={ check }
           />
           <select
             type="text"
             data-testid="rare-filter"
             onChange={ this.filterByRare }
+            disabled={ check }
           >
             <option>todas</option>
             <option>normal</option>
@@ -146,6 +158,13 @@ class App extends React.Component {
             <option>muito raro</option>
 
           </select>
+          <input
+            name="cardTrunfo"
+            data-testid="trunfo-filter"
+            type="checkBox"
+            checked={ check }
+            onChange={ this.filterByTrunfo }
+          />
         </div>
 
         <Card
