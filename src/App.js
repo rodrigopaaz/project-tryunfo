@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: '',
       hasTrunfo: false,
       savedCards: [],
+      saved: [],
     });
   }
 
@@ -24,7 +25,7 @@ class App extends React.Component {
     const {
       cardName, cardDescription, cardAttr1,
       cardAttr2, cardAttr3, cardImage,
-      cardRare, cardTrunfo,
+      cardRare, cardTrunfo, saved,
     } = this.state;
     const pushedCards = { cardName,
       cardDescription,
@@ -35,6 +36,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo };
     this.setState((prev) => ({ savedCards: [...prev.savedCards, pushedCards] }));
+    this.setState((prev) => ({ saved: [...prev.saved, pushedCards] }));
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -43,7 +45,9 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: '',
-      cardTrunfo: '' });
+      cardTrunfo: '',
+    });
+    console.log(saved);
     return cardTrunfo ? this.setState({ hasTrunfo: true }) : null;
   };
 
@@ -74,6 +78,19 @@ class App extends React.Component {
     && checkcardAttr1 && checkcardAttr2 && checkcardAttr3 && checkTot;
   };
 
+  filterByName = (filtro) => {
+    const { savedCards, saved } = this.state;
+    const { value } = filtro.target;
+    const filtered = savedCards.filter((element) => element.cardName
+      .includes(value));
+    console.log(filtered);
+    console.log(value.length);
+    console.log(saved);
+    return value.length > 0
+      ? this.setState({ savedCards: filtered })
+      : this.setState({ savedCards: saved });
+  };
+
   removeCard = (event) => {
     const { savedCards, hasTrunfo } = this.state;
     const getCards = savedCards;
@@ -85,7 +102,8 @@ class App extends React.Component {
 
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
-      cardAttr3, cardImage, cardRare, cardTrunfo, hasTrunfo, savedCards } = this.state;
+      cardAttr3, cardImage, cardRare, cardTrunfo,
+      hasTrunfo, savedCards } = this.state;
     return (
       <div>
         <Form
@@ -102,6 +120,14 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
         />
+
+        <div>
+          <input
+            type="text"
+            data-testid="name-filter"
+            onChange={ this.filterByName }
+          />
+        </div>
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
