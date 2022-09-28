@@ -12,7 +12,7 @@ class App extends React.Component {
       cardAttr2: '',
       cardAttr3: '',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: '',
       hasTrunfo: false,
       savedCards: [],
@@ -44,7 +44,7 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: '',
     });
     console.log(saved);
@@ -83,10 +83,18 @@ class App extends React.Component {
     const { value } = filtro.target;
     const filtered = savedCards.filter((element) => element.cardName
       .includes(value));
-    console.log(filtered);
-    console.log(value.length);
-    console.log(saved);
     return value.length > 0
+      ? this.setState({ savedCards: filtered })
+      : this.setState({ savedCards: saved });
+  };
+
+  filterByRare = (filtro) => {
+    const { savedCards, saved } = this.state;
+    const { value } = filtro.target;
+    const filtered = savedCards.filter((element) => element.cardRare
+      .startsWith(value));
+    console.log(filtered);
+    return value !== 'todas'
       ? this.setState({ savedCards: filtered })
       : this.setState({ savedCards: saved });
   };
@@ -127,7 +135,19 @@ class App extends React.Component {
             data-testid="name-filter"
             onChange={ this.filterByName }
           />
+          <select
+            type="text"
+            data-testid="rare-filter"
+            onChange={ this.filterByRare }
+          >
+            <option>todas</option>
+            <option>normal</option>
+            <option>raro</option>
+            <option>muito raro</option>
+
+          </select>
         </div>
+
         <Card
           cardName={ cardName }
           cardDescription={ cardDescription }
