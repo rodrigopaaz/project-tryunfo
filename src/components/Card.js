@@ -23,7 +23,6 @@ class Card extends Component {
           {cardTrunfo && (
             <p data-testid="trunfo-card">
               Super Trunfo
-
             </p>
           )}
           {button && (
