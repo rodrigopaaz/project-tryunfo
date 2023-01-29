@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/project-tryunfo/static/css/main.0de192a6.css",
+    "main.js": "/project-tryunfo/static/js/main.844fbf2d.js",
+    "static/media/trufo.png": "/project-tryunfo/static/media/trufo.d49b3442e318218c6326.png",
+    "static/media/background.jpg": "/project-tryunfo/static/media/background.438036ab78d572004cf8.jpg",
+    "static/media/card.jpg": "/project-tryunfo/static/media/card.a1c3da26ebc33236c4ca.jpg",
+    "static/media/veryFine.png": "/project-tryunfo/static/media/veryFine.5ef478c2059cffe8f393.png",
+    "static/media/dota2.png": "/project-tryunfo/static/media/dota2.4090e33735ffbe51905c.png",
+    "index.html": "/project-tryunfo/index.html",
+    "main.0de192a6.css.map": "/project-tryunfo/static/css/main.0de192a6.css.map",
+    "main.844fbf2d.js.map": "/project-tryunfo/static/js/main.844fbf2d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0de192a6.css",
+    "static/js/main.844fbf2d.js"
+  ]
+}
