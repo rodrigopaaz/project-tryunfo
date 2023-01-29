@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable react-func/max-lines-per-function */
+/* eslint-disable max-lines */
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';

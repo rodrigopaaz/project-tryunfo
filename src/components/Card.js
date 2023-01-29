@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import fine from './veryFine.png';
@@ -6,15 +7,19 @@ class Card extends Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2,
       cardAttr3, cardImage, cardRare, cardTrunfo,
-      button, removeCard, index, classe } = this.props;
+      button, removeCard, index } = this.props;
     return (
       <div className="card">
         <div className="div2">
-          <div className="nameImage">
-            {cardTrunfo && <div className="trufo">
-              <p className="h4">Super Trunfo</p>
-              <img src={ fine } alt="fine" className="fine" />
-            </div>}
+          <div
+            className="nameImage"
+          >
+            {cardTrunfo
+            && (
+              <div className="trufo">
+                <p className="h4">Super Trunfo</p>
+                <img src={ fine } alt="fine" className="fine" />
+              </div>)}
             <p
               data-testid="name-card"
               className="name_card"
@@ -34,12 +39,17 @@ class Card extends Component {
             </p>
           </div>
           <div className="footer">
-            <p className="descriptionCard" data-testid="description-card">{ cardDescription }</p>
+            <p className="descriptionCard" data-testid="description-card">
+              { cardDescription }
+
+            </p>
 
             <div className="attributes">
               <div />
               <p data-testid="attr1-card">
-                <span>Health:</span>
+                <span>
+                  Health:
+                </span>
                 { cardAttr1 }
               </p>
               <p data-testid="attr2-card">
