@@ -10,12 +10,6 @@ Jogo estilo Super Trunfo, em que a pessoa usuário é capaz de:
 - Visualizar e filtrar todas as cartas que foram adicionadas ao baralho;
 - Jogar com o baralho criado. 
 
-<details>
-  <summary><strong>🏆 Meu desempenho</strong></summary><br />
-
-  <img src="project-info/tryunfo.png"/>
-</details>
-
 ## 🚀 Tecnologias
 > Este projeto foi desenvolvido com as seguintes tecnologias:
 - JavaScript
